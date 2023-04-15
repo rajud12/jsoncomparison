@@ -1,3 +1,9 @@
+# Setup
+From root folder run below commands
+```python3 -m venv venv  ```
+then
+```source venv/bin/activate```
+
 ## Install Requirements
 ```
 make install_req

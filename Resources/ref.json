@@ -1,0 +1,63 @@
+{
+  "type": "index_parallel",
+  "spec": {
+    "ioConfig": {
+      "type": "index_parallel",
+      "inputSource": {
+        "type": "hdfs",
+        "paths": "path1"
+      },
+      "inputFormat": {
+        "type": "parquet"
+      }
+    },
+    "tuningConfig": {
+      "type": "index_parallel",
+      "partitionSpec": {
+        "type": "dynamic"
+      }
+    },
+    "dataSchema": {
+      "timestampSpec": {
+        "column": "cat_dt",
+        "format": "millis"
+      },
+      "dimensionSpec": {
+        "dimensions": [
+          {
+            "type": "string",
+            "name": "fsc_wk_end_dt"
+          },
+          {
+            "type": "long",
+            "name": "fiscal_month"
+          },          {
+            "type": "long",
+            "name": "fiscal_year"
+          },          {
+            "type": "long",
+            "name": "fiscal_per_week"
+          },          {
+            "type": "double",
+            "name": "pending_off_standard_approvals_hours"
+          },          {
+            "type": "long",
+            "name": "pending_off_standard_approvals_count"
+          },          {
+            "type": "long",
+            "name": "lct_nbr"
+          },          {
+            "type": "long",
+            "name": "fiscal_week"
+          }
+        ]
+      },
+      "granularitySpec": {
+        "queryGranularity": "none",
+        "rollup": "false",
+        "segmentGranularity": "all"
+      },
+      "dataSource": "sca_sc_prd.rdc_productivity_pending_off_standard_daily"
+    }
+  }
+}
